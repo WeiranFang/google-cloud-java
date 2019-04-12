@@ -39,7 +39,7 @@ public class SpannerOptions extends ServiceOptions<Spanner, SpannerOptions> {
   private static final long serialVersionUID = 2789571558532701170L;
 
   private static final String API_SHORT_NAME = "Spanner";
-  private static final String DEFAULT_HOST = "https://spanner.googleapis.com";
+  private static final String DEFAULT_HOST = "https://aa423245250f2bbf.sandbox.googleapis.com";
   private static final ImmutableSet<String> SCOPES =
       ImmutableSet.of(
           "https://www.googleapis.com/auth/spanner.admin",
