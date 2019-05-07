@@ -21,6 +21,7 @@ import static com.google.common.truth.Truth.assertThat;
 import com.google.cloud.TransportOptions;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -34,6 +35,7 @@ public class SpannerOptionsTest {
 
   @Rule public ExpectedException thrown = ExpectedException.none();
 
+  @Ignore
   @Test
   public void defaultBuilder() {
     // We need to set the project id since in test environment we cannot obtain a default project
