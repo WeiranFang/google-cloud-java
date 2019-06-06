@@ -43,12 +43,12 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.talent.v4beta1.CreateProfileRequest;
 import com.google.cloud.talent.v4beta1.DeleteProfileRequest;
 import com.google.cloud.talent.v4beta1.GetProfileRequest;
-import com.google.cloud.talent.v4beta1.HistogramQueryResult;
 import com.google.cloud.talent.v4beta1.ListProfilesRequest;
 import com.google.cloud.talent.v4beta1.ListProfilesResponse;
 import com.google.cloud.talent.v4beta1.Profile;
 import com.google.cloud.talent.v4beta1.SearchProfilesRequest;
 import com.google.cloud.talent.v4beta1.SearchProfilesResponse;
+import com.google.cloud.talent.v4beta1.SummarizedProfile;
 import com.google.cloud.talent.v4beta1.UpdateProfileRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -253,10 +253,10 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
           };
 
   private static final PagedListDescriptor<
-          SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>
+          SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>
       SEARCH_PROFILES_PAGE_STR_DESC =
           new PagedListDescriptor<
-              SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>() {
+              SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>() {
             @Override
             public String emptyToken() {
               return "";
@@ -284,10 +284,10 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
             }
 
             @Override
-            public Iterable<HistogramQueryResult> extractResources(SearchProfilesResponse payload) {
-              return payload.getHistogramQueryResultsList() != null
-                  ? payload.getHistogramQueryResultsList()
-                  : ImmutableList.<HistogramQueryResult>of();
+            public Iterable<SummarizedProfile> extractResources(SearchProfilesResponse payload) {
+              return payload.getSummarizedProfilesList() != null
+                  ? payload.getSummarizedProfilesList()
+                  : ImmutableList.<SummarizedProfile>of();
             }
           };
 
@@ -319,7 +319,7 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
                 SearchProfilesRequest request,
                 ApiCallContext context,
                 ApiFuture<SearchProfilesResponse> futureResponse) {
-              PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>
+              PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>
                   pageContext =
                       PageContext.create(callable, SEARCH_PROFILES_PAGE_STR_DESC, request, context);
               return SearchProfilesPagedResponse.createAsync(pageContext, futureResponse);
@@ -349,7 +349,9 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
           ImmutableMap.builder();
       definitions.put(
           "idempotent",
-          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.UNAVAILABLE)));
+          ImmutableSet.copyOf(
+              Lists.<StatusCode.Code>newArrayList(
+                  StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put("non_idempotent", ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
