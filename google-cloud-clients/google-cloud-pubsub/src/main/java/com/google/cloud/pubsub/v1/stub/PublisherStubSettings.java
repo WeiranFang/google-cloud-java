@@ -490,6 +490,7 @@ public class PublisherStubSettings extends StubSettings<PublisherStubSettings> {
               Lists.<StatusCode.Code>newArrayList(
                   StatusCode.Code.ABORTED,
                   StatusCode.Code.CANCELLED,
+                  StatusCode.Code.DEADLINE_EXCEEDED,
                   StatusCode.Code.INTERNAL,
                   StatusCode.Code.RESOURCE_EXHAUSTED,
                   StatusCode.Code.UNAVAILABLE,
@@ -518,7 +519,7 @@ public class PublisherStubSettings extends StubSettings<PublisherStubSettings> {
               .setInitialRetryDelay(Duration.ofMillis(100L))
               .setRetryDelayMultiplier(1.3)
               .setMaxRetryDelay(Duration.ofMillis(60000L))
-              .setInitialRpcTimeout(Duration.ofMillis(12000L))
+              .setInitialRpcTimeout(Duration.ofMillis(25000L))
               .setRpcTimeoutMultiplier(1.0)
               .setMaxRpcTimeout(Duration.ofMillis(30000L))
               .setTotalTimeout(Duration.ofMillis(600000L))
