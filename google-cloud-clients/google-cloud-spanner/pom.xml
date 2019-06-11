@@ -48,6 +48,7 @@
         <configuration>
           <excludedGroups>com.google.cloud.spanner.IntegrationTest</excludedGroups>
           <reportNameSuffix>sponge_log</reportNameSuffix>
+	  <skipTests>true</skipTests>
         </configuration>
       </plugin>
       <plugin>

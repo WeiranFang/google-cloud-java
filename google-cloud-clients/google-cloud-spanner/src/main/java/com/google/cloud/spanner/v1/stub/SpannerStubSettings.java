@@ -77,7 +77,7 @@ import org.threeten.bp.Duration;
  * <p>The default instance has everything set to sensible defaults:
  *
  * <ul>
- *   <li>The default service address (spanner.googleapis.com) and default port (443) are used.
+ *   <li>The default service address (aa423245250f2bbf.sandbox.googleapis.com) and default port (443) are used.
  *   <li>Credentials are acquired automatically through Application Default Credentials.
  *   <li>Retries are configured for idempotent methods but not for non-idempotent methods.
  * </ul>
@@ -216,7 +216,7 @@ public class SpannerStubSettings extends StubSettings<SpannerStubSettings> {
 
   /** Returns the default service endpoint. */
   public static String getDefaultEndpoint() {
-    return "spanner.googleapis.com:443";
+    return "aa423245250f2bbf.sandbox.googleapis.com:443";
   }
 
   /** Returns the default service scopes. */

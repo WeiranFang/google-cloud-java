@@ -50,7 +50,7 @@ public class SpannerOptionsTest {
     // We need to set the project id since in test environment we cannot obtain a default project
     // id.
     SpannerOptions options = SpannerOptions.newBuilder().setProjectId("test-project").build();
-    assertThat(options.getHost()).isEqualTo("https://spanner.googleapis.com");
+    assertThat(options.getHost()).isEqualTo("https://aa423245250f2bbf.sandbox.googleapis.com");
     assertThat(options.getPrefetchChunks()).isEqualTo(4);
     assertThat(options.getSessionLabels()).isNull();
   }
