@@ -99,6 +99,7 @@ import com.google.spanner.v1.ResultSet;
 import com.google.spanner.v1.RollbackRequest;
 import com.google.spanner.v1.Session;
 import com.google.spanner.v1.Transaction;
+import io.grpc.CallOptions;
 import io.grpc.Context;
 import java.util.LinkedList;
 import java.util.List;
@@ -706,6 +707,8 @@ public class GapicSpannerRpc implements SpannerRpc {
     if (timeout != null) {
       context = context.withTimeout(timeout);
     }
+    CallOptions callOptions = context.getCallOptions();
+    context.withCallOptions(callOptions.withCompression("gzip"));
     return context.withStreamWaitTimeout(waitTimeout).withStreamIdleTimeout(idleTimeout);
   }
 
