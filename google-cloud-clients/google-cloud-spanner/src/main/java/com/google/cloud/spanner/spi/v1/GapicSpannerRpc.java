@@ -99,6 +99,7 @@ import com.google.spanner.v1.ResultSet;
 import com.google.spanner.v1.RollbackRequest;
 import com.google.spanner.v1.Session;
 import com.google.spanner.v1.Transaction;
+import io.grpc.CallOptions;
 import io.grpc.Context;
 import java.util.LinkedList;
 import java.util.List;
@@ -254,9 +255,7 @@ public class GapicSpannerRpc implements SpannerRpc {
     try {
       this.spannerStub =
           GrpcSpannerStub.create(
-              options
-                  .getSpannerStubSettings()
-                  .toBuilder()
+              options.getSpannerStubSettings().toBuilder()
                   .setTransportChannelProvider(channelProvider)
                   .setCredentialsProvider(credentialsProvider)
                   .setStreamWatchdogProvider(watchdogProvider)
@@ -264,9 +263,7 @@ public class GapicSpannerRpc implements SpannerRpc {
 
       this.instanceAdminStub =
           GrpcInstanceAdminStub.create(
-              options
-                  .getInstanceAdminStubSettings()
-                  .toBuilder()
+              options.getInstanceAdminStubSettings().toBuilder()
                   .setTransportChannelProvider(channelProvider)
                   .setCredentialsProvider(credentialsProvider)
                   .setStreamWatchdogProvider(watchdogProvider)
@@ -274,9 +271,7 @@ public class GapicSpannerRpc implements SpannerRpc {
 
       this.databaseAdminStub =
           GrpcDatabaseAdminStub.create(
-              options
-                  .getDatabaseAdminStubSettings()
-                  .toBuilder()
+              options.getDatabaseAdminStubSettings().toBuilder()
                   .setTransportChannelProvider(channelProvider)
                   .setCredentialsProvider(credentialsProvider)
                   .setStreamWatchdogProvider(watchdogProvider)
@@ -706,6 +701,8 @@ public class GapicSpannerRpc implements SpannerRpc {
     if (timeout != null) {
       context = context.withTimeout(timeout);
     }
+    CallOptions callOptions = context.getCallOptions();
+    context.withCallOptions(callOptions.withCompression("gzip"));
     return context.withStreamWaitTimeout(waitTimeout).withStreamIdleTimeout(idleTimeout);
   }
 
