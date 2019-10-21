@@ -702,8 +702,8 @@ public class GapicSpannerRpc implements SpannerRpc {
       context = context.withTimeout(timeout);
     }
     CallOptions callOptions = context.getCallOptions();
-    context.withCallOptions(callOptions.withCompression("gzip"));
-    return context.withStreamWaitTimeout(waitTimeout).withStreamIdleTimeout(idleTimeout);
+    return context.withCallOptions(callOptions.withCompression("gzip"))
+        .withStreamWaitTimeout(waitTimeout).withStreamIdleTimeout(idleTimeout);
   }
 
   @Override
